@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import users from "./users";
+import userReducer from "./usersReducer";
 
 export default combineReducers({
-    users,
+    userReducer,
 });
+
+// https://medium.com/how-to-react/how-to-use-redux-with-react-hooks-and-axios-a78d942fbe9c

@@ -1,70 +1,27 @@
-import {
-    GET_USERS,
-    CREATE_USER,
-    UPDATE_USER,
-    DELETE_USER,
-  } from "./usersType";
 import http from '../../services/httpService';
 import { Success, Error } from '../../utils/exceptionHandler';
 
-// import userService from '../../services/usersService';
+// export const getAllUsers = async (dispatch) => {
+//     return await http.get(`panel/users`)
+//             .then(res => res.data.data)
+//             .then(payload => dispatch({ type: "GET_USERS", payload}))
+//             .catch(err => Error(err));
+// }
 
-export const getAllUsers = async (dispatch) => {
-    try {
-    const payload =  await http.get(`panel/users`)
-        .then(res => res.data.data)
-        .catch(err => Error(err));
-
-        dispatch({
-            type: GET_USERS,
-            payload
-          });
-    } catch (err) {
-        console.log(err);
+export const getUsers = () => async dispatch => {
+    
+    try{
+        const res = await http.get(`panel/users`)
+        dispatch( {
+            type: "GET_USERS",
+            payload: res.data.data
+        })
     }
-}
-
-export const CREATE_USER = async (dispatch) => {
-    try {
-    const payload =  await http.get(`panel/users`)
-        .then(res => res.data.data)
-        .catch(err => Error(err));
-
-        dispatch({
-            type: GET_USERS,
-            payload
-          });
-    } catch (err) {
-        console.log(err);
+    catch(error){
+        // dispatch( {
+        //     type: USERS_ERROR,
+        //     payload: error,
+        // })
     }
-}
 
-export const UPDATE_USER = async (dispatch) => {
-    try {
-    const payload =  await http.get(`panel/users`)
-        .then(res => res.data.data)
-        .catch(err => Error(err));
-
-        dispatch({
-            type: GET_USERS,
-            payload
-          });
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-export const getAllUsers = async (dispatch) => {
-    try {
-    const payload =  await http.get(`panel/users`)
-        .then(res => res.data.data)
-        .catch(err => Error(err));
-
-        dispatch({
-            type: GET_USERS,
-            payload
-          });
-    } catch (err) {
-        console.log(err);
-    }
 }
