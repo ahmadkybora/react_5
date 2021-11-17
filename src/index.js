@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 import "bootstrap/dist/css/bootstrap.css";
 import 'jquery/dist/jquery.min.js';
 import "bootstrap/dist/js/bootstrap.js";
@@ -26,7 +28,9 @@ import 'font-awesome/css/font-awesome.css';
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')
