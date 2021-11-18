@@ -10,20 +10,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import 'jquery/dist/jquery.min.js';
 import "bootstrap/dist/js/bootstrap.js";
 import 'font-awesome/css/font-awesome.css';
-// import axios from 'axios';
-
-// axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
-// const token = localStorage.getItem('token');
-
-// if(token){
-//   axios.defaults.headers.common = {'Authorization': `bearer ${token}`};
-// }
-// const users = axios.get('http://127.0.0.1:8000/api/panel/users')
-//   .then(res => {
-//     const users = res.data.data;
-//     console.log(typeof(users));
-//   });
-
 
 ReactDOM.render(
   <BrowserRouter>

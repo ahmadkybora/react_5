@@ -1,21 +1,23 @@
-import { getUsers } from '../actions/users';
+import { getUsers, Users } from '../actions/users';
+import { GET_USERS } from '../actions/type';
 
 const initialState = {
   users:[],
   loading:true
 }
 
-export default function (users = initialState, action) {
+export default function (state = initialState, action) {
+  // console.log(action.type);
   switch(action.type) {
 
-    case "GET_USERS":
+    case GET_USERS: {
         return {
-            ...users,
-            users:action.payload,
-            loading:false
-
+            ...state,
+            users: action.payload,
+            loading: false
         }
+    }
 
-    default: return users
+    default: return state
   }
 };

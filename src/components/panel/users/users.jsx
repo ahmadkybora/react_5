@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
 import http from '../../../services/httpService';
 import { getAllUsers, deleteUser } from '../../../services/usersService';
 import { button, input } from '../../../utils/tools';
 import Register from '../../auth/register';
 import Pagination from '../../../utils/components/pagination';
 import Modal from '../../../utils/components/Modal';
-import $ from 'jquery'; 
+import { connect } from 'react-redux'
+import { getUsers } from '../../../store/actions/users'
+import { bindActionCreators } from 'redux'
+
+const mapStateToProps = state => {
+    return {
+        users: state.userReducer.users
+    }
+}
+
+const mapDispacthToProps = dispatch => {
+    return bindActionCreators({ getUsers }, dispatch)
+    // return {
+    //   getUsers: () => dispatch(getUsers())    
+    // }
+};
 
 class Users extends Component {
 
@@ -26,16 +40,36 @@ class Users extends Component {
     }
 
     async componentDidMount() {
-        const users = await getAllUsers();
+        await this.props.getUsers();
+        // const users = await getAllUsers();
+        const { 
+            data: users, 
+            from, 
+            to, 
+            current_page: currentPage, 
+            last_page: lastPage, 
+            per_page: perPage, 
+            total 
+        } = this.props.users
+        // const users = this.props.users.data;
+        // const from = this.props.users.from;
+        // const to = this.props.users.to;
+        // const currentPage = this.props.users.current_page;
+        // const lastPage = this.props.users.last_page;
+        // const perPage = this.props.users.per_page;
+        // const total = this.props.users.total;
+        // console.log(usersa)
+        // const users = await getAllUsers();
         this.setState({ 
-            users: users.data, 
-            from: users.from,
-            to: users.to,
-            currentPage: users.current_page,
-            lastPage: users.last_page,
-            perPage: users.per_page,
-            total: users.total,
+            users, 
+            from,
+            to,
+            currentPage,
+            lastPage,
+            perPage,
+            total,
         });
+        // console.log("user", this.state.users);
     }
 
     async getAllUsers() {
@@ -113,7 +147,6 @@ class Users extends Component {
     }
 
     showUser = user => {
-        // $("container").hidden();
         const { show, users } = this.state;
         const userId = users.find(u => u.id === user.id );
         return this.setState({ 
@@ -149,10 +182,6 @@ class Users extends Component {
             total: users.total,
         });
     }
-
-    // displayModal = () => {
-    //     $("#myModal").modal("show");
-    // }
 
     render() { 
         const { 
@@ -243,4 +272,4 @@ class Users extends Component {
     }
 }
  
-export default Users;
+export default connect(mapStateToProps, mapDispacthToProps)(Users)
