@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import SideBar from './sidebar';
 import Footer from './footer';
+import Header from './header';
+import Products from './front/products';
+import Banner from './front/banner';
+import Categories from './front/categories';
 
 class Home extends Component {
     state = {};
@@ -8,7 +12,11 @@ class Home extends Component {
     render () {
         return (
           <React.Fragment>
-            <div className="container">
+            <Header />
+            <Banner />
+            <Products />
+            <Categories />
+            <div className="container mt-3">
               <div className="row">
                 <div className="col-md-3">
                   <div className="jumbotron">

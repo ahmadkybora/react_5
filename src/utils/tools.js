@@ -86,3 +86,28 @@ export const td = ( style ) => {
         <th>#</th>
     )
 }
+
+export const col = ( style ) => {
+    return (
+        <div className={style}></div>
+    )
+}
+// export const info = ( user, label, type ) => {
+//     return (
+//         <i 
+//         className={label} 
+//         onClick={() => {
+//             switch(type) {
+//                 case 'show':
+//                     this.showUser(user)
+//                 break;
+//                 case 'edit':
+//                     this.editUser(user)
+//                 break;
+//                 case 'delete':
+//                     this.deleteUser(user)
+//                 break;
+//             }}}>
+//         </i>
+//     )
+// }

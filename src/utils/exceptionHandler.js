@@ -16,15 +16,20 @@ export const Success = res => {
 export const Error = err => {
     // if(!err.status)
     //     return toast.warning('Your are disconnected!');
-
     switch (err.response.status) {
         // its OK!
         case 422:
+            console.log(window.location.href);
             if (Object.keys(err.response.data.errors).length !== null) {
                 const errCount = Object.keys(err.response.data.errors).length;
                 const errValue = Object.values(err.response.data.errors);
                 for (let i = 0; i < errCount; i++) {
                     toast.error(errValue[i][0]);
+                    // if(window.location.href === 'http://localhost:3000/login') {
+                    //     toast.error(errValue[i][0][0]);
+                    // } else {
+                    //     toast.error(errValue[i][0]);
+                    // }
                 }
             }
         break;

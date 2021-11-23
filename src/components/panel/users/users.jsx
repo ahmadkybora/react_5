@@ -6,7 +6,7 @@ import Register from '../../auth/register';
 import Pagination from '../../../utils/components/pagination';
 import Modal from '../../../utils/components/Modal';
 import { connect } from 'react-redux'
-import { getUsers } from '../../../store/actions/users'
+import { getUsers } from '../../../store/actions/userActions'
 import { bindActionCreators } from 'redux'
 
 const mapStateToProps = state => {
@@ -16,10 +16,11 @@ const mapStateToProps = state => {
 }
 
 const mapDispacthToProps = dispatch => {
-    return bindActionCreators({ getUsers }, dispatch)
-    // return {
-    //   getUsers: () => dispatch(getUsers())    
-    // }
+    // return bindActionCreators({ getUsers }, dispatch)
+    return {
+    //   getUsers: () => dispatch(getUsers()),
+      getUsers: () => dispatch({ type: "GET_USERS" })      
+    }
 };
 
 class Users extends Component {
@@ -41,7 +42,7 @@ class Users extends Component {
 
     async componentDidMount() {
         await this.props.getUsers();
-        // const users = await getAllUsers();
+
         const { 
             data: users, 
             from, 
@@ -51,15 +52,7 @@ class Users extends Component {
             per_page: perPage, 
             total 
         } = this.props.users
-        // const users = this.props.users.data;
-        // const from = this.props.users.from;
-        // const to = this.props.users.to;
-        // const currentPage = this.props.users.current_page;
-        // const lastPage = this.props.users.last_page;
-        // const perPage = this.props.users.per_page;
-        // const total = this.props.users.total;
-        // console.log(usersa)
-        // const users = await getAllUsers();
+
         this.setState({ 
             users, 
             from,
@@ -69,7 +62,7 @@ class Users extends Component {
             perPage,
             total,
         });
-        // console.log("user", this.state.users);
+
     }
 
     async getAllUsers() {
@@ -272,4 +265,4 @@ class Users extends Component {
     }
 }
  
-export default connect(mapStateToProps, mapDispacthToProps)(Users)
+export default connect(mapStateToProps, { getUsers })(Users)

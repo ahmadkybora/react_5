@@ -1,9 +1,12 @@
 import { combineReducers } from "redux";
 import userReducer from "./usersReducer";
+import homeReducer from "./homeReducer";
+import authReducer from "./authReducer";
 
 const rootReducer = combineReducers({
+    authReducer,
     userReducer,
+    homeReducer
 });
 
 export default rootReducer;
-// https://medium.com/how-to-react/how-to-use-redux-with-react-hooks-and-axios-a78d942fbe9c

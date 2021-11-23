@@ -1,5 +1,4 @@
-import { getUsers, Users } from '../actions/users';
-import { GET_USERS } from '../actions/type';
+import * as actions from '../actions/type';
 
 const initialState = {
   users:[],
@@ -7,10 +6,8 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-  // console.log(action.type);
   switch(action.type) {
-
-    case GET_USERS: {
+    case actions.GET_USERS: {
         return {
             ...state,
             users: action.payload,

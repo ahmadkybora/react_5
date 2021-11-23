@@ -1,8 +1,23 @@
 import React from 'react'
-import { doLogin } from '../../services/authService';
 import Form from '../../utils/components/form';
 import Joi from 'joi-browser';
-import { min } from 'lodash';
+import { onLogin } from '../../store/actions/authAction';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.authReducer.user
+    }
+}
+
+// map dispatch
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onLogin: (payload) => {
+            dispatch({ type: "LOGIN" , payload })
+        }
+    }
+}
 
 class Login extends Form {
     
@@ -33,12 +48,15 @@ class Login extends Form {
             });
 
         if(!results.error) {
-            return doLogin(payload);
+            return this.props.onLogin(payload);
+            // return doLogin(payload);
         }
 
         for(let item of results.error.details) {
             errors[item.path[0]] = item.message;
         }
+
+        // this.props.onLogin(payload)
     }
 
     render () {
@@ -53,7 +71,7 @@ class Login extends Form {
                         )}
                         {this.input("text", "username", "UserName", "col-md-4", "form-control m-2")}
                         {this.input("password", "password", "Password", "col-md-4", "form-control m-2")}
-                        {this.button("Login")}
+                        {this.button("Login", "btn btn-sm btn-success")}
                     </form>
                 </div>
             </div>
@@ -61,4 +79,5 @@ class Login extends Form {
     }
 }
 
-export default Login;
+export default connect(mapStateToProps, { onLogin })(Login);
+// export default Login;

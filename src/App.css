@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.pug {
+  border-radius:15px;
+  background-color:#add8e6;
+}
