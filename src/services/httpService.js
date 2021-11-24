@@ -1,6 +1,4 @@
 import axios from "axios";
-// import logger from "./logService";
-// import { toast } from "react-toastify";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 const token = localStorage.getItem('token');
@@ -11,6 +9,15 @@ if(token){
     "Content-Type": "application/json",
     "Authorization": "Bearer " + token
   };
+
+axios.interceptors.response.use(null, err => {
+  switch(err.response.status) {
+    case 403:
+      window.location.replace("http://localhost:3000");
+    break;
+  }
+});
+
   // axios.defaults.headers.common['Authorization'] = `Bearer + ${token}`;
   // axios.defaults.headers.common['Content-Type'] = 'application/json';
   // axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

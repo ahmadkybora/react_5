@@ -1,6 +1,7 @@
 import http from "../../services/httpService"
 import * as actions from "./type";
 import { Success, Error } from '../../utils/exceptionHandler';
+import { Route, Switch, Redirect } from "react-router-dom";
 
 export const onLogin = (payload) => {
     return async dispatch => {
@@ -21,8 +22,14 @@ export const onLogin = (payload) => {
             dispatch({
                 type: actions.LOGIN,
                 payload: res.data.data
-            })
-            window.location.replace("/");
+            });
+            if(res.data.data.isAdmin) {
+                // <Redirect to="/panel/users"/>
+                // console.log()
+                window.location.replace('http://localhost:3000/panel/users');
+            } else {
+                window.location.replace("/");
+            }
         })
         .catch(err => Error(err))
     }

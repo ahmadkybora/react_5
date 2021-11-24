@@ -4,12 +4,13 @@ import { Link, NavLink } from 'react-router-dom';
 class NavBar extends Component {
     state = {
       user: {
-        fullName: localStorage.getItem('fullName')
+        fullName: localStorage.getItem('fullName'),
+        isAdmin: localStorage.getItem('isAdmin'),
       }
     };
 
     render () {
-      const { fullName } = this.state.user;
+      const { fullName, isAdmin } = this.state.user;
       console.log(fullName);
         const style = {
           backgroundColor: "#e3f2fd"
@@ -18,6 +19,11 @@ class NavBar extends Component {
         return (
             <nav className="navbar navbar-expand-lg navbar-light mb-3" style={style}>
               <Link className="navbar-brand" to="/">Home</Link>
+              { ( isAdmin === "true" ) && (
+                  <NavLink className="nav-item nav-link text-success" to="/panel/users">
+                    Panel
+                  </NavLink>
+              )}
               <button
                 className="navbar-toggler"
                 type="button"
@@ -59,7 +65,6 @@ class NavBar extends Component {
                       </NavLink>
                     </React.Fragment>
                   )}
-
                 </div>
               </div>
           </nav>

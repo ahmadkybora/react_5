@@ -9,7 +9,7 @@ export const ProtectedRouteAdmin = ({ component: Component, ...restOfProps }) =>
     <Route
       {...restOfProps}
       render={(props) =>
-        ( isAuthenticated && isAdmin ) ? <Component {...props} /> : <Redirect to="/login" />
+        ( isAuthenticated && ( isAdmin === "true" ) ) ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );

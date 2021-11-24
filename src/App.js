@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Users from './components/panel/users/users';
 import EditUser from './components/panel/users/editUsers';
+import Products from './components/panel/products';
 import { LogoutRoute } from './middlewares/isLogout';
 import { LoginRoute } from './middlewares/isLogin';
 import { ProtectedRouteAdmin } from './middlewares/isAdmin';
@@ -39,6 +40,8 @@ class App extends Component {
 
             <ProtectedRouteAdmin path="/panel/users" component={Users} />
             <ProtectedRouteAdmin path="/panel/users/edit/:id" component={EditUser} />
+
+            <ProtectedRouteAdmin path="/panel/products" component={Products} />
 
           </Switch>
         </main>
