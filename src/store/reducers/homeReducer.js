@@ -3,7 +3,8 @@ import * as actions from "../actions/type";
 const initialState = {
     products: [],
     product:{},
-    categories: []
+    categories: [],
+    brands: []
 }
 
 export default function(state = initialState, action) {
@@ -27,6 +28,13 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 categories: action.payload,
+            }
+        }
+
+        case actions.GET_BRANDS: {
+            return {
+                ...state,
+                brands: action.payload
             }
         }
         

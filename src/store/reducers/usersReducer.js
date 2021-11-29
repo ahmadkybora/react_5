@@ -2,7 +2,8 @@ import * as actions from '../actions/type';
 
 const initialState = {
   users:[],
-  loading:true
+  user: {},
+  edit: false,
 }
 
 export default function (state = initialState, action) {
@@ -11,7 +12,20 @@ export default function (state = initialState, action) {
         return {
             ...state,
             users: action.payload,
-            loading: false
+        }
+    }
+    case actions.CREATE_USERS: {
+      return {
+          ...state,
+          user: {},
+          edit: false
+      }
+    }
+    case actions.UPDATE_USERS: {
+        return {
+            ...state,
+            user: action.payload,
+            edit: true
         }
     }
 

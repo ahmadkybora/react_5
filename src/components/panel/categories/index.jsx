@@ -6,13 +6,13 @@ import Register from '../../auth/register';
 import Pagination from '../../../utils/components/pagination';
 import Modal from '../../../utils/components/Modal';
 import { connect } from 'react-redux'
-import { getProducts } from '../../../store/actions/productActions'
+import { getCategories } from '../../../store/actions/categoryActions'
 import { bindActionCreators } from 'redux'
 import imgLoading from '../../../loading.gif';
 
 const mapStateToProps = state => {
     return {
-        products: state.productReducer.products
+        categories: state.categoryReducer.categories
     }
 }
 
@@ -20,14 +20,15 @@ const mapDispacthToProps = dispatch => {
     // return bindActionCreators({ getUsers }, dispatch)
     return {
     //   getUsers: () => dispatch(getUsers()),
-      getProducts: () => dispatch({ type: "GET_Products" })      
+      getCategories: () => dispatch({ type: "GET_CATEGORIES" })      
     }
 };
 
-class Products extends Component {
+class Categories extends Component {
 
     state = {
-        products: [],
+        categories: [],
+        category: {},
         from : '',
         to: '',
         currentPage: '',
@@ -42,22 +43,22 @@ class Products extends Component {
     }
 
     async componentDidMount() {
-        await this.props.getProducts();
+        await this.props.getCategories();
 
         const { 
-            data: products, 
+            data: categories, 
             from, 
             to, 
             current_page: currentPage, 
             last_page: lastPage, 
             per_page: perPage, 
             total 
-        } = this.props.products
+        } = this.props.categories
 
-        products.map(p => p.loading = false);
+        categories.map(p => p.loading = true);
 
         this.setState({ 
-            products, 
+            categories, 
             from,
             to,
             currentPage,
@@ -68,36 +69,36 @@ class Products extends Component {
 
     }
 
-    async getAllUsers() {
-        const products = await http.get(`panel/products`)
+    async getAllCategories() {
+        const categories = await http.get(`panel/categories`)
             .then(res => res.data.data)
             .catch(err => Error(err));
 
         this.setState({ 
-            users: products.data, 
-            from: products.from,
-            to: products.to,
-            currentPage: products.current_page,
-            lastPage: products.last_page,
-            perPage: products.per_page,
-            total: products.total,
+            users: categories.data, 
+            from: categories.from,
+            to: categories.to,
+            currentPage: categories.current_page,
+            lastPage: categories.last_page,
+            perPage: categories.per_page,
+            total: categories.total,
         });
     }
 
-    option = ( product, label, type ) => {
+    option = ( category, label, type ) => {
         return (
             <i 
             className={label} 
             onClick={() => {
                 switch(type) {
                     case 'show':
-                        this.showProduct(product)
+                        this.showCategory(category)
                     break;
                     case 'edit':
-                        this.editProduct(product)
+                        this.editCategory(category)
                     break;
                     case 'delete':
-                        this.deleteProduct(product)
+                        this.deleteCategory(category)
                     break;
                 }}}>
             </i>
@@ -115,7 +116,7 @@ class Products extends Component {
         )
     }
     
-    createProduct = () => {
+    createCategory = () => {
         const { displayForm, style } = this.state;
         let close = "fa fa-close text-danger";
         let plus = "fa fa-user-plus text-success";
@@ -128,7 +129,7 @@ class Products extends Component {
         });
     }
 
-    editProduct = product => {
+    editCategory = Category => {
         const { displayForm, style } = this.state;
         let close = "fa fa-close text-danger";
         let plus = "fa fa-user-plus text-success";
@@ -138,49 +139,49 @@ class Products extends Component {
             displayForm: displayForm ? false : true, 
             status: true, 
             style: ( style === plus ) ? close : plus,
-            product: product
+            Category: Category
         });
     }
 
-    showProduct = product => {
-        const { show, products } = this.state;
-        const productId = products.find(u => u.id === product.id );
+    showCategory = category => {
+        const { show, categories } = this.state;
+        const categoryId = categories.find(u => u.id === category.id );
         return this.setState({ 
             show: show ? false : true,
-            product: productId
+            category: categoryId
         });
     }
 
-    updateProduct = () => {}
+    updateCategory = () => {}
 
-    deleteProduct = async product => {
-        this.setState({users: this.state.products.filter((u) => { 
-                return u !== product 
+    deleteCategory = async category => {
+        this.setState({users: this.state.category.filter((u) => { 
+                return u !== category 
             })
         });
         // await deleteProduct(product);
-        await this.getAllProducts();
+        await this.getAllCategories();
     }
     
     handlePageChange = async (page) => {
         this.setState({ currentPage: page });
 
-        await this.props.getProducts(page);
+        await this.props.getCategories(page);
 
         const { 
-            data: products, 
+            data: categories, 
             from, 
             to, 
             current_page: currentPage, 
             last_page: lastPage,
             per_page: perPage,
             total,
-        } = this.props.products;
+        } = this.props.categories;
 
-        products.map(p => p.loading = false);
+        categories.map(p => p.loading = true);
 
         this.setState({
-            products,
+            categories,
             from,
             to,
             currentPage, 
@@ -192,8 +193,8 @@ class Products extends Component {
 
     render() { 
         const { 
-            products, 
-            product, 
+            categories, 
+            category, 
             edit, 
             displayForm, 
             currentPage, 
@@ -206,7 +207,7 @@ class Products extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-3">
-                        <h1>Products table</h1>
+                        <h1>Catgegories table</h1>
                     </div>
                     <div className="col-md-6">
                         <form>
@@ -227,7 +228,7 @@ class Products extends Component {
                     <div className="col-md-3">
                         <button 
                             className="btn btn-default float-end"
-                            onClick={() => {this.createProduct()}}>
+                            onClick={() => {this.createCategory()}}>
                             <i className={this.state.style} />
                         </button>
                     </div>
@@ -235,12 +236,12 @@ class Products extends Component {
                 {displayForm ? 
                 <Register 
                     edit={edit} 
-                    user={edit ? product : ''} 
+                    user={edit ? category : ''} 
                 /> : ''}
                 {show ? 
                 <Modal 
                     title={title} 
-                    value={product} 
+                    value={category} 
                     show={show} 
                 /> : ''}
                 <table className="table table-striped">
@@ -248,31 +249,31 @@ class Products extends Component {
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Category</th>
+                            <th>Brand</th>
                             <th>Image</th>
-                            <th>Price</th>
+                            <th></th>
                             <th>Option</th> 
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((product, index) => (
-                            <tr key={product.id}>
+                        {categories.map((category, index) => (
+                            <tr key={category.id}>
                                 <td>{currentPage === 1 ? (index + 1) : (index + 1) + ((currentPage - 1) * 10)}</td>
-                                <td>{product.name}</td>
-                                <td>{product.category.name}</td>
+                                <td>{category.name}</td>
+                                <td>{category.brand.name}</td>
                                 <td>
                                     <img 
-                                        src={product.image === null ? imgLoading : "http://localhost:8000/storage/" + product.image} 
+                                        src={category.image === null ? imgLoading : "http://localhost:8000/storage/" + category.image} 
                                         class="rounded-circle" 
                                         width="50px" 
                                         height="50px"
                                     />
                                 </td>
-                                <td>{product.price}</td>
+                                <td>{category.price}</td>
                                 <td>
-                                    {this.option(product, "fa fa-edit text-primary m-1", "edit")}
-                                    {this.option(product, "fa fa-trash text-danger m-1", "delete")}
-                                    {this.option(product, "fa fa-eye text-success m-1", "show")}
+                                    {this.option(category, "fa fa-edit text-primary m-1", "edit")}
+                                    {this.option(category, "fa fa-trash text-danger m-1", "delete")}
+                                    {this.option(category, "fa fa-eye text-success m-1", "show")}
                                 </td>
                             </tr>
                         ))}
@@ -288,4 +289,4 @@ class Products extends Component {
     }
 }
  
-export default connect(mapStateToProps, { getProducts })(Products)
+export default connect(mapStateToProps, { getCategories })(Categories)

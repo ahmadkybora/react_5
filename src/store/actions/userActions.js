@@ -1,6 +1,6 @@
 import http from '../../services/httpService';
 import { Success, Error } from '../../utils/exceptionHandler';
-import { GET_USERS } from './type';
+import * as actions from './type';
 
 export const getUsers = () => {
     return async dispatch => {
@@ -8,12 +8,25 @@ export const getUsers = () => {
       await http.get(`panel/users`)
         .then(res => {
           dispatch({ 
-            type:GET_USERS, 
+            type:actions.GET_USERS, 
             payload:res.data.data 
           });
         })
         .catch(err => {
         //   dispatch({type:SELECT_PRODUCTS_FAILURE,payload:err});
         });
+    };
+};
+
+export const createUsers = () => {
+    return {
+      type: actions.CREATE_USERS,
+    };
+};
+
+export const updateUsers = (payload) => {
+    return {
+      type: actions.UPDATE_USERS,
+      payload
     };
 };

@@ -26,7 +26,7 @@ export const onLogin = (payload) => {
             if(res.data.data.isAdmin) {
                 // <Redirect to="/panel/users"/>
                 // console.log()
-                window.location.replace('http://localhost:3000/panel/users');
+                window.location.replace('http://localhost:3000/panel/dashboard');
             } else {
                 window.location.replace("/");
             }
@@ -43,7 +43,9 @@ export const onRegister = (payload) => {
             dispatch({
                 type: actions.REGISTER,
                 payload: res.data.data
-            })
+            });
+            if(res.status === 200)
+                window.location.replace("/");
         })
         .catch(err => Error(err))
     }

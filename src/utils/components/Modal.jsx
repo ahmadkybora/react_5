@@ -6,8 +6,9 @@ const Modal = ({ title, value, show }) => {
     const [user, setUser] = useState(value);
     // const [show, setShow] = useState(show);
     useEffect(() => {
+        // console.log(user)
         // const myModal = document.getElementById('myModal')
-        console.log('[Cockpit.js] useEffect');
+        // console.log('[Cockpit.js] useEffect');
         // var modalToggle = document.getElementById('myModal') // relatedTarget
         // myModal.show(modalToggle)
         // $('#myModal').modal('show');

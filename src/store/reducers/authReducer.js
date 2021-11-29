@@ -12,6 +12,14 @@ export default function(state = initialState, action) {
                 user: action.payload,
             }
         }
+
+        case actions.REGISTER: {
+            return {
+                ...state,
+                user: action.payload,
+            }
+        }
+
         case actions.LOGOUT: {
             return {
                 ...state,

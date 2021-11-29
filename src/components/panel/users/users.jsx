@@ -6,7 +6,7 @@ import Register from '../../auth/register';
 import Pagination from '../../../utils/components/pagination';
 import Modal from '../../../utils/components/Modal';
 import { connect } from 'react-redux'
-import { getUsers } from '../../../store/actions/userActions'
+import { getUsers, updateUsers, createUsers } from '../../../store/actions/userActions'
 import { bindActionCreators } from 'redux'
 
 const mapStateToProps = state => {
@@ -16,10 +16,19 @@ const mapStateToProps = state => {
 }
 
 const mapDispacthToProps = dispatch => {
-    // return bindActionCreators({ getUsers }, dispatch)
     return {
-    //   getUsers: () => dispatch(getUsers()),
-      getUsers: () => dispatch({ type: "GET_USERS" })      
+      getUsers: () => {
+          dispatch({ type: "GET_USERS" })
+      },
+      craeteUser: () => {
+          dispatch({ type: "CREATE_USERS" })  
+      },
+      updateUsers: (payload) => {
+          dispatch({ type: "UPDATE_USERS" }, payload)  
+      },
+      showUsers: (payload) => {
+          dispatch({ type: "SHOW_USERS" }, payload)
+      }   
     }
 };
 
@@ -123,26 +132,32 @@ class Users extends Component {
             status: true, 
             style: ( style === plus ) ? close : plus,
         });
+
+        this.props.createUsers(this.state.edit)
     }
 
     editUser = user => {
-        const { displayForm, style } = this.state;
+        const { displayForm, style, users } = this.state;
+        const userId = users.find(u => u.id === user.id );
+
         let close = "fa fa-close text-danger";
         let plus = "fa fa-user-plus text-success";
 
-        this.setState({ 
+        this.setState({  
             edit: true, 
             displayForm: displayForm ? false : true, 
             status: true, 
             style: ( style === plus ) ? close : plus,
-            user: user
+            user: userId
         });
+
+        this.props.updateUsers(userId)
     }
 
     showUser = user => {
         const { show, users } = this.state;
         const userId = users.find(u => u.id === user.id );
-        return this.setState({ 
+        this.setState({ 
             show: show ? false : true,
             user: userId
         });
@@ -187,7 +202,7 @@ class Users extends Component {
             show,
             title
         } = this.state;
-        
+        // console.log(displayForm, user, edit);
         return (
             <div className="container">
                 <div className="row">
@@ -218,11 +233,7 @@ class Users extends Component {
                         </button>
                     </div>
                 </div>
-                {displayForm ? 
-                <Register 
-                    edit={edit} 
-                    user={edit ? user : ''} 
-                /> : ''}
+                {displayForm ? <Register  /> : ''}
                 {show ? 
                 <Modal 
                     title={title} 
@@ -265,4 +276,4 @@ class Users extends Component {
     }
 }
  
-export default connect(mapStateToProps, { getUsers })(Users)
+export default connect(mapStateToProps, { getUsers, createUsers, updateUsers })(Users)

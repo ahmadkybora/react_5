@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import Search from '../utils/components/search';
-import { button, input } from '../utils/tools';
-
-const Header = () => {
+import { NavLink } from 'react-router-dom';
+class Header extends Component {
+    render() { 
         return (
             <div classname="container mb-3">
                 <div className="row">
                     <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                        <NavLink to="/">
-                            <p className="text-center pug">Categories</p>
+                        <NavLink to="/panel/users">
+                            <p className="text-center pug">Users</p>
                         </NavLink>
                     </div>
                     <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                        <NavLink to="/">
+                        <NavLink to="/panel/products">
                             <p className="text-center pug">Products</p>
                         </NavLink>
                     </div>
                     <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                        <NavLink to="/">
-                            <p className="text-center pug">Services</p>
+                        <NavLink to="/panel/categories">
+                            <p className="text-center pug">Categories</p>
                         </NavLink>
                     </div>
                     <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
@@ -43,6 +41,7 @@ const Header = () => {
                 </div> */}
             </div>
         );
+    }
 }
  
 export default Header;

@@ -15,6 +15,9 @@ import { LogoutRoute } from './middlewares/isLogout';
 import { LoginRoute } from './middlewares/isLogin';
 import { ProtectedRouteAdmin } from './middlewares/isAdmin';
 import logout from './components/auth/logout';
+import SideBar from './components/sidebar';
+import Dashboard from './components/panel/dashboard';
+import Panel from './components/panel';
 
 class App extends Component {
 
@@ -30,18 +33,15 @@ class App extends Component {
       <React.Fragment>
         <ToastContainer />
         <NavBar />
-        <main className="container">
+        <main className="container-fluid">
           <Switch>
             <Route path="/" exact component={Home} />
             <LogoutRoute path="/login" component={Login} />
             <LogoutRoute path="/register" component={Register} />
             <LoginRoute path="/logout" component={logout} />
             <Route path="/about" component={About} />
-
-            <ProtectedRouteAdmin path="/panel/users" component={Users} />
-            <ProtectedRouteAdmin path="/panel/users/edit/:id" component={EditUser} />
-
-            <ProtectedRouteAdmin path="/panel/products" component={Products} />
+            
+            <ProtectedRouteAdmin path="/panel" component={Panel} />
 
           </Switch>
         </main>

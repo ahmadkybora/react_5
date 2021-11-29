@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import { onLogout } from '../../store/actions/authAction'
 
@@ -14,22 +14,12 @@ const mapDispacthToProps = dispatch => {
     }
 };
 
-class logout extends Component {
-    componentDidMount()
-    {
-        console.log("ok");
-        this.props.onLogout()
-        // localStorage.removeItem('token');
-        // localStorage.removeItem('fullName');
-        // localStorage.removeItem('username');
-        // localStorage.removeItem('isAdmin');
+const Logout = (props) => {
+    useEffect(() => {
+        props.onLogout();
+    });
 
-        // window.location = '/';
-    }
-
-    render() { 
-        return <div></div>;
-    }
+    return <div></div>
 }
  
-export default connect(mapStateToProps, { onLogout })(logout);
+export default connect(mapStateToProps, { onLogout })(Logout);

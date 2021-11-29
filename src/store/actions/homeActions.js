@@ -21,12 +21,25 @@ export const showProduct = (payload) => {
     };
 }
 
-export const getCategories = () => {
+export const getCategories = (page = 1) => {
     return async dispatch => {
-        await http.get('/categories')
+        await http.get(`/categories?page=${page}`)
         .then(res => {
             dispatch({
                 type: actions.GET_CATEGORIES,
+                payload: res.data.data
+            })
+        })
+        .catch(err => Error(err))
+    }
+}
+
+export const getBrands = (page = 1) => {
+    return async dispatch => {
+        await http.get(`/brands?page=${page}`)
+        .then(res => {
+            dispatch({
+                type: actions.GET_BRANDS,
                 payload: res.data.data
             })
         })

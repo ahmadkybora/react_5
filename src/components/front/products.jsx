@@ -57,7 +57,7 @@ class Products extends Component {
             total,
         } = this.props.products;
 
-        products.map(p => p.loading = true);
+        products.map(p => p.loading = false);
 
         this.setState({
             products,
@@ -89,7 +89,7 @@ class Products extends Component {
             total,
         } = this.props.products;
 
-        products.map(p => p.loading = true);
+        products.map(p => p.loading = false);
 
         this.setState({
             products,
@@ -186,7 +186,7 @@ class Products extends Component {
                         {products.map(product => (
                             <div className="card my-1 mx-auto col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12" style={style}>
                                 <img 
-                                    src={product.loading ? imgLoading : product.image} 
+                                    src={product.loading ? imgLoading : "http://localhost:8000/storage/" + product.image} 
                                     className="card-img-top" 
                                     height="150px"
                                 />
@@ -218,6 +218,7 @@ class Products extends Component {
                                                 <div className="modal-body">
                                                     <div className="row">
                                                         <div className="col-md-4">
+                                                        {console.log(product.image)}
                                                         <img 
                                                             src={product.loading ? imgLoading : product.image} 
                                                             className="card-img-top" 

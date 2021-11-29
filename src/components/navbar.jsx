@@ -20,7 +20,7 @@ class NavBar extends Component {
             <nav className="navbar navbar-expand-lg navbar-light mb-3" style={style}>
               <Link className="navbar-brand" to="/">Home</Link>
               { ( isAdmin === "true" ) && (
-                  <NavLink className="nav-item nav-link text-success" to="/panel/users">
+                  <NavLink className="nav-item nav-link text-success" to="/panel/dashboard">
                     Panel
                   </NavLink>
               )}

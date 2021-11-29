@@ -59,6 +59,12 @@ class Login extends Form {
         // this.props.onLogin(payload)
     }
 
+    handleInputChange = event => {
+        this.setState({
+          [event.target.id]: event.target.value
+        });
+      };
+
     render () {
         const { errors } = this.state;
         return (
