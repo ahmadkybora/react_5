@@ -45,10 +45,10 @@
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Enzyme, { shallow, mount } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { shallow, mount } from 'enzyme';
+// import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Login from '../components/auth/login';
-Enzyme.configure({adapter: new Adapter()});
+// Enzyme.configure({adapter: new Adapter()});
 
 
 describe("login", () => {

@@ -5,6 +5,7 @@ import homeReducer from "./homeReducer";
 import authReducer from "./authReducer";
 import categoryReducer from "./categoryReducer";
 import dashboardReducer from "./dashboardReducer";
+import brandReducer from './brandReducer';
 
 const rootReducer = combineReducers({
     authReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     userReducer,
     productReducer,
     categoryReducer,
+    brandReducer,
     homeReducer
 });
 

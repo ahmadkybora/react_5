@@ -5,6 +5,7 @@ import 'bootstrap';
 const Modal = ({ title, value, show }) => {
     const [user, setUser] = useState(value);
     // const [show, setShow] = useState(show);
+    console.log(user)
     useEffect(() => {
         // console.log(user)
         // const myModal = document.getElementById('myModal')

@@ -29,6 +29,16 @@ class SideBar extends Component {
                                 <i className="fa fa-product-hunt">Categories</i>
                             </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink to="/panel/brands" className="nav-link" href="#">
+                                <i className="fa fa-product-hunt">Brands</i>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/panel/paint" className="nav-link" href="#">
+                                <i className="fa fa-product-hunt">paint</i>
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Paint = () => {
-    style = {
-        width: "320",
-        height: "240",
-        backgroundColor: "blue"
-    }
+    // style = {
+    //     width: "320",
+    //     height: "240",
+    //     backgroundColor: "blue"
+    // }
     return (
         <div className="bg-success">
             <p>slam</p>

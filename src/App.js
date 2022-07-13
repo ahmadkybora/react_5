@@ -19,6 +19,10 @@ import SideBar from './components/sidebar';
 import Dashboard from './components/panel/dashboard';
 import Panel from './components/panel';
 
+import { FBGSLATE5 } from './utils/color';
+import { slateColors
+ } from './utils/scss/colors/vars';
+import { F_BG_SLATE } from './utils/scss/colors';
 class App extends Component {
 
   // state = {
@@ -28,10 +32,20 @@ class App extends Component {
 
   render (){
     // const { isAdmin, token, loggedIn } = this.state;
-
+    // Object.entries(colors).map(color => {
+    //   console.log(color[1]);
+    //   export default FF = color[1];
+    // })
+    // let F_BG_SLATE = [];
+    // Object.values(slateColors).forEach(color => {
+    //   F_BG_SLATE.push(color)
+    // })
+    // console.log(F_BG_SLATE[1]);
     return (
       <React.Fragment>
-        <ToastContainer />
+        <p style={F_BG_SLATE[4]}>s</p>
+        {/* {console.log(FBGSLATE0)} */}
+        {/* <ToastContainer />
         <NavBar />
         <main className="container-fluid">
           <Switch>
@@ -43,8 +57,8 @@ class App extends Component {
             
             <ProtectedRouteAdmin path="/panel" component={Panel} />
 
-          </Switch>
-        </main>
+          </Switch> 
+        </main> */}
       </React.Fragment>
     );
   }

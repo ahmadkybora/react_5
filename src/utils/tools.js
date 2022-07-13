@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const input = ( type, name, placeholder, className, style) => {
+export const input = ( type, name, placeholder, className, style, value = '' ) => {
     return (
         <div className="form-group" className={className}>
             <input 
@@ -8,20 +8,22 @@ export const input = ( type, name, placeholder, className, style) => {
                 type={type}
                 name={name}
                 id={name}
+                defaultValue={value}
                 placeholder={placeholder}
             />
         </div>
     )
 }
 
-export const textArea = ( name, placeholder ) => {
+export const textArea = ( name, placeholder, value = '' ) => {
     return (
         <div className="form-group col-md-8">
             <textarea 
                 className="form-control m-2"
                 name={name}
                 id={name}
-                placeholder={placeholder}
+                placeholder={placeholder} 
+                defaultValue={value}
                 rows="5"
             ></textarea>
         </div>
@@ -41,13 +43,14 @@ export const file = ( name ) => {
     )
 }
 
-export const button = ( name = '', font = '', Style ) => {
+export const button = ( name = '', font = '', style ) => {
     return (
-        <button 
-            className={Style}>
-            <i className={font} />
-            {name}
-        </button>
+        <div className="form-group col-md-8">
+            <button className={style}>
+                <i className={font} />
+                {name}
+            </button>
+        </div>
     )
 }
 

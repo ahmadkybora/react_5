@@ -14,6 +14,7 @@ export default function (state = initialState, action) {
             users: action.payload,
         }
     }
+
     case actions.CREATE_USERS: {
       return {
           ...state,
@@ -21,6 +22,7 @@ export default function (state = initialState, action) {
           edit: false
       }
     }
+    
     case actions.UPDATE_USERS: {
         return {
             ...state,

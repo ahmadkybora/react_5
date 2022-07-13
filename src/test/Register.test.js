@@ -1,29 +1,36 @@
 import React from 'react';
-import Enzyme, { shallow, mount } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { shallow, mount } from 'enzyme';
+// import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Register from '../components/auth/register';
-Enzyme.configure({ adapter: new Adapter() });
+// import checkPropTypes from 'check-prop-types';
+import { checkProps, findByName } from './utils/test';
+
+// Enzyme.configure({ adapter: new Adapter() });
 
 
 describe("test Register", () => {
     const setup = (props = {}, state = null) => {
-        const wrapper = shallow(<Register {...props}/>);
+        const defaultProps = { edit: true }
+        const setupProps = { ...defaultProps, ...props }
+        const wrapper = shallow(<Register {...setupProps }/>);
         if(state) wrapper.setState(state); 
         return wrapper;
     }
 
-    const findByName = (wrapper, value) => {
-        return wrapper.find(`[name="${value}"]`)
-    }
+
+    // const findByName = (wrapper, value) => {
+    //     return wrapper.find(`[name="${value}"]`)
+    // }
 
     let wrapper;
     it("test component log", () => {
-        const log = shallow(<Register / >);
+        wrapper = setup();
+        // const log = shallow(<Register / >);
         {/* console.log(log.debug()); */}
     });
 
     it("test value input", () => {
-        wrapper = setup();
+        wrapper = setup({ edit: true });
         const payload = {
             first_name: 'ahmad',
             last_name: 'montazeri',
@@ -44,9 +51,16 @@ describe("test Register", () => {
     });
 
     it("test state", () => {
-        wrapper = setup();
+        wrapper = setup({ edit: true });
         const state = wrapper.state('payload');
         expect(state);
         // console.log(state);
     });
+
+    it("test props", () => {
+        const expectedProps = { success: false};
+        checkProps(Register, expectedProps)
+        // const propErr = checkPropTypes(Register.propTypes, expectedProps, 'prop', Register.name);
+        // expect(propErr).toBeUndefined();
+    })
 })

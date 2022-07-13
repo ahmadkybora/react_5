@@ -1,0 +1,137 @@
+@import "../vars";
+
+/**
+موارد زیر متغییر ها را گرفته و رنگ ها را 
+برای پشت زمینه میسازد
+*/
+@each $val, $slate in 
+    (
+        0: $slate0, 
+        1: $slate1, 
+        2: $slate2, 
+        3: $slate3, 
+        4: $slate4, 
+        5: $slate5, 
+        6: $slate6, 
+        7: $slate7, 
+        8: $slate8, 
+        9: $slate9
+    )
+    {
+    .f-bg-slate-#{$val} {
+        background-color: $slate;
+    }
+    .f-txt-slate-#{$val} {
+        color: $slate;
+    }
+}
+
+@each $val, $gray in 
+    (
+        0: $gray0, 
+        1: $gray1, 
+        2: $gray2, 
+        3: $gray3, 
+        4: $gray4, 
+        5: $gray5, 
+        6: $gray6, 
+        7: $gray7, 
+        8: $gray8, 
+        9: $gray9
+    )
+    {
+    .f-bg-gray-#{$val} {
+        background-color: $gray;
+    }
+    .f-txt-gray-#{$val} {
+        color: $gray;
+    }
+}
+
+@each $val, $zinc in 
+    (
+        0: $zinc0, 
+        1: $zinc1, 
+        2: $zinc2, 
+        3: $zinc3, 
+        4: $zinc4, 
+        5: $zinc5, 
+        6: $zinc6, 
+        7: $zinc7, 
+        8: $zinc8, 
+        9: $zinc9
+    )
+    {
+    .f-bg-zinc-#{$val} {
+        background-color: $zinc;
+    }
+    .f-txt-zinc-#{$val} {
+        color: $zinc;
+    }
+}
+
+@each $val, $neutral in 
+    (
+        0: $neutral0, 
+        1: $neutral1, 
+        2: $neutral2, 
+        3: $neutral3, 
+        4: $neutral4, 
+        5: $neutral5, 
+        6: $neutral6, 
+        7: $neutral7, 
+        8: $neutral8, 
+        9: $neutral9
+    )
+    {
+    .f-bg-natural-#{$val} {
+        background-color: $neutral;
+    }
+    .f-txt-neutral-#{$val} {
+        color: $neutral;
+    }
+}
+
+@each $val, $stone in 
+    (
+        0: $stone0, 
+        1: $stone1, 
+        2: $stone2, 
+        3: $stone3, 
+        4: $stone4, 
+        5: $stone5, 
+        6: $stone6, 
+        7: $stone7, 
+        8: $stone8, 
+        9: $stone9
+    )
+    {
+    .f-bg-stone-#{$val} {
+        background-color: $stone;
+    }
+    .f-txt-stone-#{$val} {
+        color: $stone;
+    }
+}
+
+@each $val, $red in 
+    (
+        0: $red0, 
+        1: $red1, 
+        2: $red2, 
+        3: $red3, 
+        4: $red4, 
+        5: $red5, 
+        6: $red6, 
+        7: $red7, 
+        8: $red8, 
+        9: $red9
+    )
+    {
+    .f-bg-red-#{$val} {
+        background-color: $red;
+    }
+    .f-txt-red-#{$val} {
+        color: $red;
+    }
+}

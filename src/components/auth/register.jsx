@@ -5,6 +5,8 @@ import { doRegister } from '../../services/authService';
 import { userUpdate } from '../../services/usersService';
 import { onRegister } from '../../store/actions/authAction';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 // import $ from 'jquery';
 // window.$ = $;
 
@@ -310,6 +312,10 @@ class Register extends Form {
             </div>
         )
     }
+}
+
+Register.propTypes = {
+    edit: PropTypes.bool.isRequired
 }
 
 export default connect(mapStateToProps, { onRegister })(Register);

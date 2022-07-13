@@ -12,4 +12,9 @@ export const SHOW_PRODUCT = "SHOW_PRODUCT";
 export const UPDATE_USERS = "UPDATE_USERS";
 
 export const GET_CATEGORIES = "GET_CATEGORIES";
+
 export const GET_BRANDS = "GET_BRANDS";
+export const CREATE_BRANDS = "CREATE_BRANDS";
+export const STORE_BRANDS = "STORE_BRANDS";
+export const EDIT_BRNADS = "EDIT_BRNADS";
+export const UPDATE_BRNADS = "UPDATE_BRNADS";

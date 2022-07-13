@@ -5,6 +5,7 @@ import Header from './layouts/header';
 import Users from './users/users';
 import EditUser from './users/editUsers';
 import products from './products/index';
+import Brands from './brands/index';
 import { ProtectedRouteAdmin } from '../../middlewares/isAdmin';
 import categories from './categories';
 import Paint from './paint/index';
@@ -28,6 +29,7 @@ class Panel extends Component {
                     <ProtectedRouteAdmin path="/panel/users/edit/:id" component={EditUser} />
                     <ProtectedRouteAdmin path="/panel/products" component={products} />
                     <ProtectedRouteAdmin path="/panel/categories" component={categories} />
+                    <ProtectedRouteAdmin path="/panel/brands" component={Brands} />
                     <ProtectedRouteAdmin path="/panel/paint" component={Paint} />
                 </div>
                 <div className="col-xl-12 col-lg-12">
