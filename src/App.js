@@ -22,14 +22,18 @@ import Panel from './components/panel';
 import { FBGSLATE5 } from './utils/color';
 import { slateColors
  } from './utils/scss/colors/vars';
-import { F_BG_SLATE } from './utils/scss/colors';
+import { F_BG_SLATE, F_BG_GRAY } from './utils/scss/colors';
 class App extends Component {
 
   // state = {
   //   isAdmin: localStorage.getItem('isAdmin'),
   //   loggedIn: localStorage.getItem('token')
   // }
-
+  loop = () => {
+      for (var i = 0; i < 10; i++) {
+          <p style={F_BG_SLATE[i]}>s</p>
+      } 
+  }
   render (){
     // const { isAdmin, token, loggedIn } = this.state;
     // Object.entries(colors).map(color => {
@@ -43,7 +47,26 @@ class App extends Component {
     // console.log(F_BG_SLATE[1]);
     return (
       <React.Fragment>
+        <p style={F_BG_SLATE[0]}>s</p>
+        <p style={F_BG_SLATE[1]}>s</p>
+        <p style={F_BG_SLATE[2]}>s</p>
+        <p style={F_BG_SLATE[3]}>s</p>
         <p style={F_BG_SLATE[4]}>s</p>
+        <p style={F_BG_SLATE[5]}>s</p>
+        <p style={F_BG_SLATE[6]}>s</p>
+        <p style={F_BG_SLATE[7]}>s</p>
+        <p style={F_BG_SLATE[8]}>s</p>
+        <p style={F_BG_SLATE[9]}>s</p>
+        <p style={F_BG_GRAY[0]}>s</p>
+        <p style={F_BG_GRAY[1]}>s</p>
+        <p style={F_BG_GRAY[2]}>s</p>
+        <p style={F_BG_GRAY[3]}>s</p>
+        <p style={F_BG_GRAY[4]}>s</p>
+        <p style={F_BG_GRAY[5]}>s</p>
+        <p style={F_BG_GRAY[6]}>s</p>
+        <p style={F_BG_GRAY[7]}>s</p>
+        <p style={F_BG_GRAY[8]}>s</p>
+        <p style={F_BG_GRAY[9]}>s</p>
         {/* {console.log(FBGSLATE0)} */}
         {/* <ToastContainer />
         <NavBar />

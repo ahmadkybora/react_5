@@ -11,6 +11,19 @@ export const slateColors = {
     slate9: "#0f172a",
 }
 
+export const grayColors = {
+    gray0: "#f9fafb",
+    gray1: "#f3f4f6",
+    gray2: "#e5e7eb",
+    gray3: "#d1d5db",
+    gray4: "#9ca3af",
+    gray5: "#6b7280",
+    gray6: "#4b5563",
+    gray7: "#374151",
+    gray8: "#1f2937",
+    gray9: "#111827",
+};
+
 export const colors = {
     // primary: "#d3ab55",
     // red100: "#f77c7c",
@@ -30,16 +43,16 @@ export const colors = {
     slate7: "#334155",
     slate8: "#475569",
     slate9: "#0f172a",
-// $gray0: #f9fafb;
-// $gray1: #f3f4f6;
-// $gray2: #e5e7eb;
-// $gray3: #d1d5db;
-// $gray4: #9ca3af;
-// $gray5: #6b7280;
-// $gray6: #4b5563;
-// $gray7: #374151;
-// $gray8: #1f2937;
-// $gray9: #111827;
+    gray0: "#f9fafb",
+    gray1: "#f3f4f6",
+    gray2: "#e5e7eb",
+    gray3: "#d1d5db",
+    gray4: "#9ca3af",
+    gray5: "#6b7280",
+    gray6: "#4b5563",
+    gray7: "#374151",
+    gray8: "#1f2937",
+    gray9: "#111827",
 // $zinc0: #fafafa;
 // $zinc1: #f4f4f5;
 // $zinc2: #e4e4e7;
